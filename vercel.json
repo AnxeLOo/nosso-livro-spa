@@ -3,6 +3,14 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/presentation",
+      "destination": "/presentation.html"
+    },
+    {
+      "source": "/presentation.html",
+      "destination": "/presentation.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
