@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Livro — Apresentação do Projeto</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 550 550'%3E%3Crect width='550' height='550' rx='120' fill='%23b81628'/%3E%3Cg transform='translate(18,-824)' fill='%23ffd700'%3E%3Cpath d='m 157.54301,922.36336 -16.97149,16.9707 -45.256019,45.2539 -56.570993,56.57034 62.227502,62.2246 56.571,-56.5684 299.82842,299.8124 a 32.001491,31.999993 0 0 0 45.25601,0 32.001491,31.999993 0 0 0 0,-45.2539 l -299.82646,-299.8143 16.9715,-16.97074 50.91448,-50.91015 z'/%3E%3Cpath d='m 255.989,844.0001 c 0,0 168.00781,127.99997 168.00783,256 C 423.99684,1164 367.99425,1236 271.98975,1236 c -64.00296,0 -104.24119,-47.7637 -104.24119,-47.7637 l -11.31302,11.3125 a 16.000745,15.999996 0 0 0 -22.62801,0 16.000745,15.999996 0 0 0 -2.47863,3.2227 32.001491,31.999993 0 0 0 -31.464359,8.0918 32.001491,31.999993 0 0 0 -9.330512,21.5449 C 65.101725,1246.1605 22.969246,1272.9834 4.2643862,1308 l 0.029298,0.029 A 32.001491,31.999993 0 0 0 4.2643862,1340 32.001491,31.999993 0 0 0 47.979313,1351.7129 c 35.025561,-18.708 61.854737,-60.8518 75.605087,-86.2813 a 32.001491,31.999993 0 0 0 21.53616,-9.3144 32.001491,31.999993 0 0 0 7.93201,-13.2012 c 24.51647,23.0544 71.44493,57.084 134.93792,57.084 96.00451,0 200.00932,-72 200.00932,-199.9999 0,-160.00002 -232.01081,-256 -232.01081,-256 z'/%3E%3C/g%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101012;
+      --surface: rgba(255, 255, 255, 0.075);
+      --surface-strong: rgba(255, 255, 255, 0.12);
+      --surface-hover: rgba(255, 255, 255, 0.11);
+      --stroke: rgba(255, 255, 255, 0.12);
+      --stroke-strong: rgba(255, 255, 255, 0.22);
+      --text: #f7f5f3;
+      --muted: #aaa7ab;
+      --red: #ff453a;
+      --red-light: #ff7770;
+      --red-deep: #c51e2a;
+      --green: #30d158;
+      --yellow: #ffd60a;
+      --orange: #ff9f0a;
+      --cyan: #64d2ff;
+      --purple: #bf5af2;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+      --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+      --glass: saturate(180%) blur(24px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 88% 4%, rgba(172, 28, 43, 0.28), transparent 34rem),
+        radial-gradient(ellipse at 8% 46%, rgba(100, 100, 115, 0.16), transparent 30rem),
+        radial-gradient(circle at 50% 90%, rgba(197, 30, 42, 0.12), transparent 26rem),
+        linear-gradient(160deg, #19191d 0%, var(--bg) 54%, #171316 100%);
+      background-attachment: fixed;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Presentation Layout */
+    .deck-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top Navigation Header */
+    .deck-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 36px;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(16, 16, 18, 0.85) 0%, rgba(16, 16, 18, 0) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      border-radius: 15px;
+      color: white;
+      background: linear-gradient(145deg, #ff5b50, #b81628);
+      box-shadow: 0 8px 24px rgba(255, 69, 58, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .brand:hover .brand-mark {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 10px 28px rgba(255, 69, 58, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .brand-mark svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.65px;
+      line-height: 1.1;
+    }
+
+    .brand-tagline {
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.2px;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      padding: 3px;
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #ff5b50, #b81628);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(255, 69, 58, 0.35);
+    }
+
+    .control-btn {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      cursor: pointer;
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      transition: all 0.2s ease;
+    }
+
+    .control-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--stroke-strong);
+      transform: translateY(-1px);
+    }
+
+    .control-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      z-index: 150;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 14.28%;
+      background: linear-gradient(90deg, #ff5b50, #ff8982);
+      box-shadow: 0 0 12px rgba(255, 69, 58, 0.8);
+      transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Slides Viewport */
+    .slides-viewport {
+      position: relative;
+      flex: 1;
+      width: min(100%, 1280px);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px 0 24px;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    /* Slide Typography & Badges */
+    .eyebrow {
+      color: #ff8982;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 10px var(--red);
+    }
+
+    .slide-title {
+      font-size: clamp(32px, 4.2vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      background: linear-gradient(180deg, #ffffff 20%, #dedede 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-subtitle {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 820px;
+      margin-bottom: 30px;
+    }
+
+    /* Reusable Glass Card */
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--stroke-strong);
+      transform: translateY(-2px);
+    }
+
+    /* Tech Pill */
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e4e2df;
+    }
+
+    .tech-pill.primary {
+      background: rgba(255, 69, 58, 0.12);
+      border-color: rgba(255, 69, 58, 0.35);
+      color: #ff9892;
+    }
+
+    .tech-pill.success {
+      background: rgba(48, 209, 88, 0.12);
+      border-color: rgba(48, 209, 88, 0.35);
+      color: #5deb80;
+    }
+
+    .tech-pill.cyan {
+      background: rgba(100, 210, 255, 0.12);
+      border-color: rgba(100, 210, 255, 0.35);
+      color: #7ee0ff;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    /* Slide 1 - Hero Specifics */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .hero-preview-card {
+      background: linear-gradient(145deg, rgba(35, 35, 42, 0.9), rgba(20, 20, 24, 0.95));
+      border: 1px solid var(--stroke-strong);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 69, 58, 0.15);
+      position: relative;
+    }
+
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--stroke);
+    }
+
+    .hero-stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-number.accent {
+      color: #ff7770;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Slide 2 - Problem vs Solution Cards */
+    .compare-card.problem {
+      border-left: 4px solid var(--red);
+      background: linear-gradient(135deg, rgba(255, 69, 58, 0.05) 0%, rgba(255, 255, 255, 0.04) 100%);
+    }
+
+    .compare-card.solution {
+      border-left: 4px solid var(--green);
+      background: linear-gradient(135deg, rgba(48, 209, 88, 0.05) 0%, rgba(255, 255, 255, 0.04) 100%);
+    }
+
+    .card-header-icon {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+    }
+
+    .icon-badge.red {
+      background: rgba(255, 69, 58, 0.15);
+      color: #ff6860;
+    }
+
+    .icon-badge.green {
+      background: rgba(48, 209, 88, 0.15);
+      color: #47db6e;
+    }
+
+    .icon-badge.blue {
+      background: rgba(100, 210, 255, 0.15);
+      color: #64d2ff;
+    }
+
+    .icon-badge.purple {
+      background: rgba(191, 90, 242, 0.15);
+      color: #d175ff;
+    }
+
+    .icon-badge svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #dedede;
+    }
+
+    .check-mark {
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-mark.cross {
+      color: #ff6860;
+    }
+
+    .check-mark.tick {
+      color: #47db6e;
+    }
+
+    /* Slide 3 - Feature Cards */
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .feature-card p {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-top: 8px;
+      flex: 1;
+    }
+
+    .feature-badge-row {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kbd-shortcut {
+      display: inline-block;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: #fff;
+    }
+
+    /* Slide 4 - Architecture Boxes */
+    .arch-card {
+      padding: 22px;
+    }
+
+    .arch-layer-title {
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .arch-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .arch-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Slide 5 - Technical Deep-Dive Cards */
+    .deepdive-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 3px solid transparent;
+    }
+
+    .deepdive-card.c1 { border-color: var(--red); }
+    .deepdive-card.c2 { border-color: var(--cyan); }
+    .deepdive-card.c3 { border-color: var(--yellow); }
+
+    .deepdive-badge {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .deepdive-card.c1 .deepdive-badge { color: var(--red-light); }
+    .deepdive-card.c2 .deepdive-badge { color: var(--cyan); }
+    .deepdive-card.c3 .deepdive-badge { color: var(--yellow); }
+
+    .deepdive-card h3 {
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+    }
+
+    .deepdive-card p {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #dedede;
+      margin-bottom: 14px;
+    }
+
+    .deepdive-highlight {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #bbb;
+      border-left: 3px solid rgba(255, 255, 255, 0.2);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+
+    /* Slide 6 - Personas */
+    .persona-card {
+      text-align: center;
+      padding: 28px 20px;
+    }
+
+    .persona-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .persona-avatar.p1 {
+      background: linear-gradient(135deg, #ff5b50, #c51e2a);
+    }
+
+    .persona-avatar.p2 {
+      background: linear-gradient(135deg, #64d2ff, #0a84ff);
+    }
+
+    .persona-avatar.p3 {
+      background: linear-gradient(135deg, #ffd60a, #ff9f0a);
+    }
+
+    .persona-name {
+      font-size: 18px;
+      font-weight: 750;
+      margin-bottom: 4px;
+    }
+
+    .persona-role {
+      font-size: 12px;
+      color: #ff8982;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .persona-cred {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      color: #ccc;
+      margin-bottom: 14px;
+    }
+
+    .persona-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Slide 7 - Roadmap & Metrics */
+    .roadmap-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+    }
+
+    .roadmap-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .roadmap-badge.done {
+      background: rgba(48, 209, 88, 0.15);
+      color: #47db6e;
+      border: 1px solid rgba(48, 209, 88, 0.3);
+    }
+
+    .roadmap-badge.next {
+      background: rgba(255, 69, 58, 0.15);
+      color: #ff7770;
+      border: 1px solid rgba(255, 69, 58, 0.3);
+    }
+
+    /* Bottom Control Bar */
+    .deck-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 36px 24px;
+      z-index: 100;
+      background: linear-gradient(0deg, rgba(16, 16, 18, 0.95) 0%, rgba(16, 16, 18, 0) 100%);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .slide-counter {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+      letter-spacing: 1px;
+    }
+
+    .slide-counter span.current {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .nav-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.25s ease;
+    }
+
+    .nav-dot:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(1.2);
+    }
+
+    .nav-dot.active {
+      background: #ff5b50;
+      width: 26px;
+      border-radius: 999px;
+      box-shadow: 0 0 10px rgba(255, 69, 58, 0.6);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-arrow-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      transition: all 0.2s ease;
+    }
+
+    .nav-arrow-btn:hover:not(:disabled) {
+      background: var(--surface-hover);
+      border-color: var(--stroke-strong);
+      transform: translateY(-1px);
+    }
+
+    .nav-arrow-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .nav-arrow-btn.primary {
+      background: linear-gradient(145deg, #ff5b50, #b81628);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(255, 69, 58, 0.35);
+    }
+
+    .nav-arrow-btn.primary:hover:not(:disabled) {
+      box-shadow: 0 6px 22px rgba(255, 69, 58, 0.48);
+    }
+
+    .nav-arrow-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    /* Modal Help overlay */
+    .shortcuts-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .shortcuts-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      width: min(90%, 480px);
+      background: #18181c;
+      border: 1px solid var(--stroke-strong);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13.5px;
+    }
+
+    .shortcut-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Print media styling */
+    @media print {
+      body {
+        overflow: visible !important;
+        background: #101012 !important;
+      }
+      .deck-header, .deck-footer, .progress-bar-container, .shortcuts-modal {
+        display: none !important;
+      }
+      .deck-container, .slides-viewport {
+        height: auto !important;
+        width: 100% !important;
+        display: block !important;
+      }
+      .slide {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        height: 100vh !important;
+        padding: 40px !important;
+        display: flex !important;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-layout, .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .deck-header {
+        padding: 14px 20px;
+      }
+      .deck-footer {
+        padding: 12px 20px 18px;
+      }
+      .slides-viewport {
+        padding: 0 18px;
+        overflow-y: auto;
+      }
+      .slide {
+        justify-content: flex-start;
+        padding-top: 20px;
+      }
+      .brand-tagline {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container">
+    <!-- Top Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="deck-header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 550 550" fill="#ffd700">
+            <g transform="translate(18, -824)">
+              <path d="m 157.54301,922.36336 -16.97149,16.9707 -45.256019,45.2539 -56.570993,56.57034 62.227502,62.2246 56.571,-56.5684 299.82842,299.8124 a 32.001491,31.999993 0 0 0 45.25601,0 32.001491,31.999993 0 0 0 0,-45.2539 l -299.82646,-299.8143 16.9715,-16.97074 50.91448,-50.91015 z" />
+              <path d="m 255.989,844.0001 c 0,0 168.00781,127.99997 168.00783,256 C 423.99684,1164 367.99425,1236 271.98975,1236 c -64.00296,0 -104.24119,-47.7637 -104.24119,-47.7637 l -11.31302,11.3125 a 16.000745,15.999996 0 0 0 -22.62801,0 16.000745,15.999996 0 0 0 -2.47863,3.2227 32.001491,31.999993 0 0 0 -31.464359,8.0918 32.001491,31.999993 0 0 0 -9.330512,21.5449 C 65.101725,1246.1605 22.969246,1272.9834 4.2643862,1308 l 0.029298,0.029 A 32.001491,31.999993 0 0 0 4.2643862,1340 32.001491,31.999993 0 0 0 47.979313,1351.7129 c 35.025561,-18.708 61.854737,-60.8518 75.605087,-86.2813 a 32.001491,31.999993 0 0 0 21.53616,-9.3144 32.001491,31.999993 0 0 0 7.93201,-13.2012 c 24.51647,23.0544 71.44493,57.084 134.93792,57.084 96.00451,0 200.00932,-72 200.00932,-199.9999 0,-160.00002 -232.01081,-256 -232.01081,-256 z" />
+            </g>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name" data-i18n="brand_title">Nosso Livro</div>
+          <div class="brand-tagline" data-i18n="brand_subtitle">Biblioteca Universitária • SPA</div>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Seletor de Idioma">
+          <button class="lang-btn active" id="btnPt" onclick="setLanguage('pt')">PT</button>
+          <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+        </div>
+
+        <!-- Help & Shortcuts Button -->
+        <button class="control-btn" onclick="toggleShortcutsModal()" title="Atalhos do Teclado (?)" aria-label="Atalhos">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+
+        <!-- Fullscreen Button -->
+        <button class="control-btn" onclick="toggleFullScreen()" title="Alternar Tela Cheia (F)" aria-label="Tela Cheia">
+          <svg viewBox="0 0 24 24" id="fullscreenIcon">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Slides Viewport -->
+    <main class="slides-viewport" id="viewport">
+
+      <!-- SLIDE 1: Capa & Hero -->
+      <section class="slide active" id="slide-1" data-index="1">
+        <div class="hero-layout">
+          <div>
+            <div class="eyebrow" data-i18n="s1_eyebrow">Projeto Final • Engenharia de Software</div>
+            <h1 class="slide-title" data-i18n="s1_title">Nosso Livro</h1>
+            <p class="slide-subtitle" data-i18n="s1_subtitle">
+              Plataforma Universitária de Livros (SPA) desenvolvida com React 18 e TypeScript. Simplificando a exploração de acervos mundiais via Open Library API, automação de empréstimos e reservas em tempo real.
+            </p>
+
+            <div class="hero-badges">
+              <span class="tech-pill primary">React 18 SPA</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill success">Zustand Stores</span>
+              <span class="tech-pill cyan">Open Library API</span>
+              <span class="tech-pill">Docker + Nginx</span>
+              <span class="tech-pill">Vite</span>
+            </div>
+
+            <div style="font-size: 13px; color: var(--muted);" data-i18n="s1_meta">
+              Apresentação do Projeto Final • Arquitetura, Desafios & Soluções
+            </div>
+          </div>
+
+          <div class="hero-preview-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56; display: inline-block;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; display: inline-block;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f; display: inline-block;"></span>
+              </div>
+              <span class="tech-pill success" style="font-size: 11px;" data-i18n="s1_card_pill">● Sistema Ativo</span>
+            </div>
+
+            <h3 style="font-size: 20px; font-weight: 750; margin-bottom: 8px;" data-i18n="s1_card_title">Experiência Acadêmica Fluida</h3>
+            <p style="font-size: 13.5px; color: var(--muted); line-height: 1.5;" data-i18n="s1_card_desc">
+              Uma interface escura com estética moderna inspirada em sistemas Apple e Raycast. Rápida, intuitiva e conectada com as necessidades diárias de estudantes e professores.
+            </p>
+
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <div class="stat-number accent">14d</div>
+                <div class="stat-label" data-i18n="s1_stat1">Prazo Padrão</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="stat-number">⌘K</div>
+                <div class="stat-label" data-i18n="s1_stat2">Busca Global</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="stat-number">0ms</div>
+                <div class="stat-label" data-i18n="s1_stat3">Sync Local</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Problema vs Visão -->
+      <section class="slide" id="slide-2" data-index="2">
+        <div class="eyebrow" data-i18n="s2_eyebrow">Diagnóstico & Proposta de Valor</div>
+        <h2 class="slide-title" data-i18n="s2_title">Da Burocracia à Circulação Instantânea</h2>
+        <p class="slide-subtitle" data-i18n="s2_subtitle">
+          Como transformamos os gargalos de acervos universitários tradicionais em uma plataforma moderna e responsiva.
+        </p>
+
+        <div class="grid-2">
+          <!-- Problem Column -->
+          <div class="glass-card compare-card problem">
+            <div class="card-header-icon">
+              <div class="icon-badge red">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="card-title" data-i18n="s2_prob_title">Bibliotecas Tradicionais (Dores)</div>
+                <div style="font-size: 12px; color: var(--muted);" data-i18n="s2_prob_sub">Sistemas legados e processos manuais</div>
+              </div>
+            </div>
+
+            <ul class="checklist">
+              <li class="checklist-item">
+                <span class="check-mark cross">✕</span>
+                <span data-i18n="s2_prob_1"><strong>Filas e atrito no balcão:</strong> Empréstimos e devoluções dependentes de atendimento presencial e planilhas isoladas.</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark cross">✕</span>
+                <span data-i18n="s2_prob_2"><strong>Busca arcaica:</strong> Catálogos OPAC rígidos, lentos e que exigem termos exatos de catalogação bibliográfica.</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark cross">✕</span>
+                <span data-i18n="s2_prob_3"><strong>Opacidade de estoque:</strong> O aluno se desloca até o campus sem saber se o exemplar físico está disponível na estante.</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark cross">✕</span>
+                <span data-i18n="s2_prob_4"><strong>Experiência mobile precária:</strong> Falta de adaptabilidade e design desatualizado que afasta o leitor jovem.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Solution Column -->
+          <div class="glass-card compare-card solution">
+            <div class="card-header-icon">
+              <div class="icon-badge green">
+                <svg viewBox="0 0 24 24">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="card-title" data-i18n="s2_sol_title">Solução: Nosso Livro (SPA)</div>
+                <div style="font-size: 12px; color: #5deb80;" data-i18n="s2_sol_sub">Experiência digital instantânea e sem atrito</div>
+              </div>
+            </div>
+
+            <ul class="checklist">
+              <li class="checklist-item">
+                <span class="check-mark tick">✓</span>
+                <span data-i18n="s2_sol_1"><strong>Circulação em 1 clique:</strong> Empréstimo com cálculo automatizado de 14 dias corridos e renovação ágil (+7 dias).</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark tick">✓</span>
+                <span data-i18n="s2_sol_2"><strong>Pesquisa instantânea ⌘K:</strong> Modal estilo Raycast buscando simultaneamente por título, autor, assunto e ISBN.</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark tick">✓</span>
+                <span data-i18n="s2_sol_3"><strong>Transparência de acervo & fila:</strong> Indicador de exemplares físicos no campus e fila de reserva automática quando esgotado.</span>
+              </li>
+              <li class="checklist-item">
+                <span class="check-mark tick">✓</span>
+                <span data-i18n="s2_sol_4"><strong>Design Dark Mode moderno:</strong> Glassmorphism suave, atalhos rápidos e barra de navegação adaptada a smartphones.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Funcionalidades Centrais -->
+      <section class="slide" id="slide-3" data-index="3">
+        <div class="eyebrow" data-i18n="s3_eyebrow">Recursos & Experiência do Usuário</div>
+        <h2 class="slide-title" data-i18n="s3_title">Uma Plataforma Completa de Leitura</h2>
+        <p class="slide-subtitle" data-i18n="s3_subtitle">
+          Recursos projetados para colocar o acervo e a autonomia do aluno no centro da experiência.
+        </p>
+
+        <div class="grid-4">
+          <!-- Card 1 -->
+          <div class="glass-card feature-card">
+            <div class="icon-badge red" style="margin-bottom: 14px;">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <h3 class="card-title" data-i18n="s3_f1_title">Busca Global Instantânea</h3>
+            <p data-i18n="s3_f1_desc">
+              Modal de pesquisa acionado via atalho global de teclado. Busca com debounce e histórico recente integrado à Open Library.
+            </p>
+            <div class="feature-badge-row">
+              <span class="kbd-shortcut">⌘K / Ctrl+K</span>
+              <span class="tech-pill" style="font-size: 11px;">Debounce 400ms</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card feature-card">
+            <div class="icon-badge green" style="margin-bottom: 14px;">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="card-title" data-i18n="s3_f2_title">Empréstimos & Reservas</h3>
+            <p data-i18n="s3_f2_desc">
+              Regras automáticas de prazo (14 dias), limite por matrícula, renovação de 7 dias e fila de espera inteligente para livros esgotados.
+            </p>
+            <div class="feature-badge-row">
+              <span class="tech-pill success" style="font-size: 11px;" data-i18n="s3_f2_pill">Fila Automática</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card feature-card">
+            <div class="icon-badge blue" style="margin-bottom: 14px;">
+              <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3 class="card-title" data-i18n="s3_f3_title">Status de Leitura</h3>
+            <p data-i18n="s3_f3_desc">
+              Classifique qualquer obra entre "Lendo", "Concluído" ou guarde na lista de "Salvos" (Wishlist) para acessar em consultas futuras.
+            </p>
+            <div class="feature-badge-row">
+              <span class="tech-pill cyan" style="font-size: 11px;" data-i18n="s3_f3_pill">Wishlist Pessoal</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass-card feature-card">
+            <div class="icon-badge purple" style="margin-bottom: 14px;">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h3 class="card-title" data-i18n="s3_f4_title">Capas Dinâmicas & Filtros</h3>
+            <p data-i18n="s3_f4_desc">
+              Geração de capas tipográficas procedurais quando a arte oficial inexiste e filtros rápidos por tópicos (Tecnologia, Clássicos, etc).
+            </p>
+            <div class="feature-badge-row">
+              <span class="tech-pill" style="font-size: 11px;" data-i18n="s3_f4_pill">Algoritmo Procedural</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: Arquitetura & Stack -->
+      <section class="slide" id="slide-4" data-index="4">
+        <div class="eyebrow" data-i18n="s4_eyebrow">Engenharia de Software</div>
+        <h2 class="slide-title" data-i18n="s4_title">Arquitetura Limpa & Tecnologias</h2>
+        <p class="slide-subtitle" data-i18n="s4_subtitle">
+          Organização modular baseada em separação de responsabilidades e stores reativas de alta performance.
+        </p>
+
+        <div class="grid-4">
+          <!-- Layer 1 -->
+          <div class="glass-card arch-card">
+            <div class="arch-layer-title" style="color: #ff7770;">
+              <span>01.</span>
+              <span data-i18n="s4_l1_title">Interface (SPA)</span>
+            </div>
+            <p class="arch-desc" data-i18n="s4_l1_desc">
+              React 18 fortemente tipado com TypeScript, roteamento seguro por React Router DOM v6 e layouts desacoplados (Auth / Default).
+            </p>
+            <div class="arch-tags">
+              <span class="tech-pill primary">React 18</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">Lucide Icons</span>
+            </div>
+          </div>
+
+          <!-- Layer 2 -->
+          <div class="glass-card arch-card">
+            <div class="arch-layer-title" style="color: #47db6e;">
+              <span>02.</span>
+              <span data-i18n="s4_l2_title">Estado Global</span>
+            </div>
+            <p class="arch-desc" data-i18n="s4_l2_desc">
+              Stores modulares Zustand com seletores granulares, impedindo re-renderizações desnecessárias e sincronizadas ao LocalStorage.
+            </p>
+            <div class="arch-tags">
+              <span class="tech-pill success">authStore</span>
+              <span class="tech-pill success">bookStore</span>
+              <span class="tech-pill success">loanStore</span>
+            </div>
+          </div>
+
+          <!-- Layer 3 -->
+          <div class="glass-card arch-card">
+            <div class="arch-layer-title" style="color: #64d2ff;">
+              <span>03.</span>
+              <span data-i18n="s4_l3_title">Serviços & API</span>
+            </div>
+            <p class="arch-desc" data-i18n="s4_l3_desc">
+              Camada Axios resiliente com normalização estruturada dos dados brutos consumidos da Open Library API (`/search` e `/works`).
+            </p>
+            <div class="arch-tags">
+              <span class="tech-pill cyan">Axios</span>
+              <span class="tech-pill cyan">Open Library</span>
+              <span class="tech-pill cyan">Data Mapper</span>
+            </div>
+          </div>
+
+          <!-- Layer 4 -->
+          <div class="glass-card arch-card">
+            <div class="arch-layer-title" style="color: #ffd60a;">
+              <span>04.</span>
+              <span data-i18n="s4_l4_title">Infra & Deploy</span>
+            </div>
+            <p class="arch-desc" data-i18n="s4_l4_desc">
+              Build de produção ultraleve com Vite, empacotamento em container Docker multi-stage com Nginx Alpine e hospedagem Vercel.
+            </p>
+            <div class="arch-tags">
+              <span class="tech-pill">Docker</span>
+              <span class="tech-pill">Nginx Alpine</span>
+              <span class="tech-pill">Vercel</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Desafios Técnicos & Task 2 -->
+      <section class="slide" id="slide-5" data-index="5">
+        <div class="eyebrow" data-i18n="s5_eyebrow">Síntese de Engenharia & Reflexão</div>
+        <h2 class="slide-title" data-i18n="s5_title">Desafios Reais & Decisões Chave</h2>
+        <p class="slide-subtitle" data-i18n="s5_subtitle">
+          Soluções técnicas fundamentadas em resiliência, manutenibilidade e performance sem gargalos de renderização.
+        </p>
+
+        <div class="grid-3">
+          <!-- Card 1: Maior Desafio Técnico -->
+          <div class="glass-card deepdive-card c1">
+            <div>
+              <span class="deepdive-badge" data-i18n="s5_c1_badge">Desafio Técnico #1</span>
+              <h3 data-i18n="s5_c1_title">Heterogeneidade da Open Library API</h3>
+              <p data-i18n="s5_c1_desc">
+                Respostas estruturais polimórficas (descrições ora como string direta, ora objeto `{value}`), capas ausentes e inexistência nativa de regras de acervo físico universitário.
+              </p>
+            </div>
+            <div class="deepdive-highlight" data-i18n="s5_c1_solution">
+              ✓ Solução: Normalizador <code>transformSearchDocToBook</code> + hash determinístico para disponibilidade física e capas tipográficas com gradientes.
+            </div>
+          </div>
+
+          <!-- Card 2: Decisão Arquitetural -->
+          <div class="glass-card deepdive-card c2">
+            <div>
+              <span class="deepdive-badge" data-i18n="s5_c2_badge">Decisão Arquitetural</span>
+              <h3 data-i18n="s5_c2_title">Zustand vs Context API & Redux</h3>
+              <p data-i18n="s5_c2_desc">
+                A Context API causaria renderizações em cascata por toda a árvore do catálogo a cada mutação de toast ou empréstimo. Redux traria boilerplate excessivo para a escala do app.
+              </p>
+            </div>
+            <div class="deepdive-highlight" data-i18n="s5_c2_solution">
+              ✓ Solução: Zustand com seletores finos, consumo fora de componentes React (Axios) e sincronização reativa ao <code>localStorage</code>.
+            </div>
+          </div>
+
+          <!-- Card 3: Conceito Mais Valioso -->
+          <div class="glass-card deepdive-card c3">
+            <div>
+              <span class="deepdive-badge" data-i18n="s5_c3_badge">Conceito Mais Valioso</span>
+              <h3 data-i18n="s5_c3_title">React Hooks & Composição</h3>
+              <p data-i18n="s5_c3_desc">
+                O desacoplamento de efeitos colaterais e ciclos de vida assíncronos permitiu manter componentes visuais estritamente focados na renderização declarativa e acessibilidade.
+              </p>
+            </div>
+            <div class="deepdive-highlight" data-i18n="s5_c3_solution">
+              ✓ Solução: Debounce reativo, listeners de atalhos de teclado (⌘K) e paginação infinita limpa sem prop drilling ou classes.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Personas & Demonstração -->
+      <section class="slide" id="slide-6" data-index="6">
+        <div class="eyebrow" data-i18n="s6_eyebrow">Validação com Usuários</div>
+        <h2 class="slide-title" data-i18n="s6_title">Perfis Acadêmicos Pré-Configurados</h2>
+        <p class="slide-subtitle" data-i18n="s6_subtitle">
+          Atalhos de autenticação com 1 clique para demonstração ágil dos diferentes perfis da universidade.
+        </p>
+
+        <div class="grid-3">
+          <!-- Persona 1 -->
+          <div class="glass-card persona-card">
+            <div class="persona-avatar p1">LM</div>
+            <div class="persona-name">Lucas Mendes</div>
+            <div class="persona-role" data-i18n="s6_p1_role">Aluno de Graduação</div>
+            <div class="persona-cred">aluno@universidade.edu.br • 20241001</div>
+            <p class="persona-desc" data-i18n="s6_p1_desc">
+              Utiliza a busca instantânea ⌘K para localizar bibliografia de disciplinas, realiza empréstimos de 14 dias e entra em filas de espera automáticas.
+            </p>
+          </div>
+
+          <!-- Persona 2 -->
+          <div class="glass-card persona-card">
+            <div class="persona-avatar p2">HM</div>
+            <div class="persona-name">Dra. Helena Martins</div>
+            <div class="persona-role" data-i18n="s6_p2_role">Docente / Pesquisadora</div>
+            <div class="persona-cred">prof@universidade.edu.br • 20180042</div>
+            <p class="persona-desc" data-i18n="s6_p2_desc">
+              Acompanha publicações de referência científica, renova prazos de pesquisa (+7 dias) e organiza listas temáticas de leitura recomendada.
+            </p>
+          </div>
+
+          <!-- Persona 3 -->
+          <div class="glass-card persona-card">
+            <div class="persona-avatar p3">MS</div>
+            <div class="persona-name">Mariana Souza</div>
+            <div class="persona-role" data-i18n="s6_p3_role">Bibliotecária do Campus</div>
+            <div class="persona-cred">biblioteca@universidade.edu.br • 20150999</div>
+            <p class="persona-desc" data-i18n="s6_p3_desc">
+              Supervisiona a disponibilidade dos exemplares físicos, controla o histórico de devoluções e gerencia a rotatividade de reservas do acervo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Conclusão & Próximos Passos -->
+      <section class="slide" id="slide-7" data-index="7">
+        <div class="eyebrow" data-i18n="s7_eyebrow">Resultados & Futuro</div>
+        <h2 class="slide-title" data-i18n="s7_title">Conclusão e Próximos Horizontes</h2>
+        <p class="slide-subtitle" data-i18n="s7_subtitle">
+          Resultados consolidados na entrega do projeto e roadmap para evolução contínua da plataforma universitária.
+        </p>
+
+        <div class="grid-2">
+          <!-- Conquistas -->
+          <div class="glass-card">
+            <div class="card-header-icon">
+              <div class="icon-badge green">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <h3 class="card-title" data-i18n="s7_achieve_title">Objetivos Concluídos</h3>
+            </div>
+            <div class="roadmap-list">
+              <div class="roadmap-item">
+                <span class="roadmap-badge done" data-i18n="badge_done">Concluído</span>
+                <span data-i18n="s7_a1">SPA responsiva de alta fidelidade com Dark Mode & Glassmorphism</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge done" data-i18n="badge_done">Concluído</span>
+                <span data-i18n="s7_a2">Integração completa com Open Library API e normalização robusta</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge done" data-i18n="badge_done">Concluído</span>
+                <span data-i18n="s7_a3">Gerenciamento modular de estado com Zustand e persistência Local</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge done" data-i18n="badge_done">Concluído</span>
+                <span data-i18n="s7_a4">Containerização Docker multi-stage e Nginx pronto para produção</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roadmap Futuro -->
+          <div class="glass-card">
+            <div class="card-header-icon">
+              <div class="icon-badge red">
+                <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <h3 class="card-title" data-i18n="s7_road_title">Roadmap Futuro</h3>
+            </div>
+            <div class="roadmap-list">
+              <div class="roadmap-item">
+                <span class="roadmap-badge next" data-i18n="badge_next">Próximo</span>
+                <span data-i18n="s7_r1">Notificações Web Push para alertas preventivos de devolução (D-2)</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge next" data-i18n="badge_next">Próximo</span>
+                <span data-i18n="s7_r2">Check-in de devolução expressa via leitura de QR Code físico</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge next" data-i18n="badge_next">Próximo</span>
+                <span data-i18n="s7_r3">Integração com autenticação acadêmica institucional (SAML/LDAP)</span>
+              </div>
+              <div class="roadmap-item">
+                <span class="roadmap-badge next" data-i18n="badge_next">Próximo</span>
+                <span data-i18n="s7_r4">Dashboard analítico de demanda bibliográfica para a coordenação</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Footer Navigation -->
+    <footer class="deck-footer">
+      <div class="footer-left">
+        <div class="slide-counter">
+          <span class="current" id="currentSlideNum">01</span> / <span id="totalSlideNum">07</span>
+        </div>
+        <div class="nav-dots" id="navDots">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <button class="nav-arrow-btn" id="prevBtn" onclick="prevSlide()" disabled title="Slide Anterior (←)">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span data-i18n="nav_prev">Anterior</span>
+        </button>
+
+        <button class="nav-arrow-btn primary" id="nextBtn" onclick="nextSlide()" title="Próximo Slide (→)">
+          <span data-i18n="nav_next">Próximo</span>
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div class="shortcuts-modal" id="shortcutsModal" onclick="closeShortcutsModalOnBackdrop(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="modal_title">Atalhos de Teclado</h3>
+        <button class="control-btn" onclick="toggleShortcutsModal()" style="width: 30px; height: 30px;">✕</button>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_next">Próximo Slide</span>
+        <div><span class="kbd-shortcut">→</span> <span class="kbd-shortcut">Espaço</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_prev">Slide Anterior</span>
+        <div><span class="kbd-shortcut">←</span> <span class="kbd-shortcut">Backspace</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_first_last">Início / Fim</span>
+        <div><span class="kbd-shortcut">Home</span> <span class="kbd-shortcut">End</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_lang">Alternar Idioma</span>
+        <div><span class="kbd-shortcut">L</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_fs">Tela Cheia</span>
+        <div><span class="kbd-shortcut">F</span></div>
+      </div>
+      <div class="shortcut-row">
+        <span data-i18n="sk_help">Ajuda / Atalhos</span>
+        <div><span class="kbd-shortcut">?</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Logic & Bilingual Translation Dictionary -->
+  <script>
+    const translations = {
+      pt: {
+        brand_title: "Nosso Livro",
+        brand_subtitle: "Biblioteca Universitária • SPA",
+        nav_prev: "Anterior",
+        nav_next: "Próximo",
+        badge_done: "Concluído",
+        badge_next: "Próximo",
+        modal_title: "Atalhos de Teclado",
+        sk_next: "Próximo Slide",
+        sk_prev: "Slide Anterior",
+        sk_first_last: "Início / Fim",
+        sk_lang: "Alternar Idioma",
+        sk_fs: "Tela Cheia",
+        sk_help: "Ajuda / Atalhos",
+
+        // Slide 1
+        s1_eyebrow: "Projeto Final • Engenharia de Software",
+        s1_title: "Nosso Livro",
+        s1_subtitle: "Plataforma Universitária de Livros (SPA) desenvolvida com React 18 e TypeScript. Simplificando a exploração de acervos mundiais via Open Library API, automação de empréstimos e reservas em tempo real.",
+        s1_meta: "Apresentação do Projeto Final • Arquitetura, Desafios & Soluções",
+        s1_card_pill: "● Sistema Ativo",
+        s1_card_title: "Experiência Acadêmica Fluida",
+        s1_card_desc: "Uma interface escura com estética moderna inspirada em sistemas Apple e Raycast. Rápida, intuitiva e conectada com as necessidades diárias de estudantes e professores.",
+        s1_stat1: "Prazo Padrão",
+        s1_stat2: "Busca Global",
+        s1_stat3: "Sync Local",
+
+        // Slide 2
+        s2_eyebrow: "Diagnóstico & Proposta de Valor",
+        s2_title: "Da Burocracia à Circulação Instantânea",
+        s2_subtitle: "Como transformamos os gargalos de acervos universitários tradicionais em uma plataforma moderna e responsiva.",
+        s2_prob_title: "Bibliotecas Tradicionais (Dores)",
+        s2_prob_sub: "Sistemas legados e processos manuais",
+        s2_prob_1: "<strong>Filas e atrito no balcão:</strong> Empréstimos e devoluções dependentes de atendimento presencial e planilhas isoladas.",
+        s2_prob_2: "<strong>Busca arcaica:</strong> Catálogos OPAC rígidos, lentos e que exigem termos exatos de catalogação bibliográfica.",
+        s2_prob_3: "<strong>Opacidade de estoque:</strong> O aluno se desloca até o campus sem saber se o exemplar físico está disponível na estante.",
+        s2_prob_4: "<strong>Experiência mobile precária:</strong> Falta de adaptabilidade e design desatualizado que afasta o leitor jovem.",
+        s2_sol_title: "Solução: Nosso Livro (SPA)",
+        s2_sol_sub: "Experiência digital instantânea e sem atrito",
+        s2_sol_1: "<strong>Circulação em 1 clique:</strong> Empréstimo com cálculo automatizado de 14 dias corridos e renovação ágil (+7 dias).",
+        s2_sol_2: "<strong>Pesquisa instantânea ⌘K:</strong> Modal estilo Raycast buscando simultaneamente por título, autor, assunto e ISBN.",
+        s2_sol_3: "<strong>Transparência de acervo & fila:</strong> Indicador de exemplares físicos no campus e fila de reserva automática quando esgotado.",
+        s2_sol_4: "<strong>Design Dark Mode moderno:</strong> Glassmorphism suave, atalhos rápidos e barra de navegação adaptada a smartphones.",
+
+        // Slide 3
+        s3_eyebrow: "Recursos & Experiência do Usuário",
+        s3_title: "Uma Plataforma Completa de Leitura",
+        s3_subtitle: "Recursos projetados para colocar o acervo e a autonomia do aluno no centro da experiência.",
+        s3_f1_title: "Busca Global Instantânea",
+        s3_f1_desc: "Modal de pesquisa acionado via atalho global de teclado. Busca com debounce e histórico recente integrado à Open Library.",
+        s3_f2_title: "Empréstimos & Reservas",
+        s3_f2_desc: "Regras automáticas de prazo (14 dias), limite por matrícula, renovação de 7 dias e fila de espera inteligente para livros esgotados.",
+        s3_f2_pill: "Fila Automática",
+        s3_f3_title: "Status de Leitura",
+        s3_f3_desc: "Classifique qualquer obra entre \"Lendo\", \"Concluído\" ou guarde na lista de \"Salvos\" (Wishlist) para acessar em consultas futuras.",
+        s3_f3_pill: "Wishlist Pessoal",
+        s3_f4_title: "Capas Dinâmicas & Filtros",
+        s3_f4_desc: "Geração de capas tipográficas procedurais quando a arte oficial inexiste e filtros rápidos por tópicos (Tecnologia, Clássicos, etc).",
+        s3_f4_pill: "Algoritmo Procedural",
+
+        // Slide 4
+        s4_eyebrow: "Engenharia de Software",
+        s4_title: "Arquitetura Limpa & Tecnologias",
+        s4_subtitle: "Organização modular baseada em separação de responsabilidades e stores reativas de alta performance.",
+        s4_l1_title: "Interface (SPA)",
+        s4_l1_desc: "React 18 fortemente tipado com TypeScript, roteamento seguro por React Router DOM v6 e layouts desacoplados (Auth / Default).",
+        s4_l2_title: "Estado Global",
+        s4_l2_desc: "Stores modulares Zustand com seletores granulares, impedindo re-renderizações desnecessárias e sincronizadas ao LocalStorage.",
+        s4_l3_title: "Serviços & API",
+        s4_l3_desc: "Camada Axios resiliente com normalização estruturada dos dados brutos consumidos da Open Library API (`/search` e `/works`).",
+        s4_l4_title: "Infra & Deploy",
+        s4_l4_desc: "Build de produção ultraleve com Vite, empacotamento em container Docker multi-stage com Nginx Alpine e hospedagem Vercel.",
+
+        // Slide 5
+        s5_eyebrow: "Síntese de Engenharia & Reflexão",
+        s5_title: "Desafios Reais & Decisões Chave",
+        s5_subtitle: "Soluções técnicas fundamentadas em resiliência, manutenibilidade e performance sem gargalos de renderização.",
+        s5_c1_badge: "Desafio Técnico #1",
+        s5_c1_title: "Heterogeneidade da Open Library API",
+        s5_c1_desc: "Respostas estruturais polimórficas (descrições ora como string direta, ora objeto `{value}`), capas ausentes e inexistência nativa de regras de acervo físico universitário.",
+        s5_c1_solution: "✓ Solução: Normalizador <code>transformSearchDocToBook</code> + hash determinístico para disponibilidade física e capas tipográficas com gradientes.",
+        s5_c2_badge: "Decisão Arquitetural",
+        s5_c2_title: "Zustand vs Context API & Redux",
+        s5_c2_desc: "A Context API causaria renderizações em cascata por toda a árvore do catálogo a cada mutação de toast ou empréstimo. Redux traria boilerplate excessivo para a escala do app.",
+        s5_c2_solution: "✓ Solução: Zustand com seletores finos, consumo fora de componentes React (Axios) e sincronização reativa ao <code>localStorage</code>.",
+        s5_c3_badge: "Conceito Mais Valioso",
+        s5_c3_title: "React Hooks & Composição",
+        s5_c3_desc: "O desacoplamento de efeitos colaterais e ciclos de vida assíncronos permitiu manter componentes visuais estritamente focados na renderização declarativa e acessibilidade.",
+        s5_c3_solution: "✓ Solução: Debounce reativo, listeners de atalhos de teclado (⌘K) e paginação infinita limpa sem prop drilling ou classes.",
+
+        // Slide 6
+        s6_eyebrow: "Validação com Usuários",
+        s6_title: "Perfis Acadêmicos Pré-Configurados",
+        s6_subtitle: "Atalhos de autenticação com 1 clique para demonstração ágil dos diferentes perfis da universidade.",
+        s6_p1_role: "Aluno de Graduação",
+        s6_p1_desc: "Utiliza a busca instantânea ⌘K para localizar bibliografia de disciplinas, realiza empréstimos de 14 dias e entra em filas de espera automáticas.",
+        s6_p2_role: "Docente / Pesquisadora",
+        s6_p2_desc: "Acompanha publicações de referência científica, renova prazos de pesquisa (+7 dias) e organiza listas temáticas de leitura recomendada.",
+        s6_p3_role: "Bibliotecária do Campus",
+        s6_p3_desc: "Supervisiona a disponibilidade dos exemplares físicos, controla o histórico de devoluções e gerencia a rotatividade de reservas do acervo.",
+
+        // Slide 7
+        s7_eyebrow: "Resultados & Futuro",
+        s7_title: "Conclusão e Próximos Horizontes",
+        s7_subtitle: "Resultados consolidados na entrega do projeto e roadmap para evolução contínua da plataforma universitária.",
+        s7_achieve_title: "Objetivos Concluídos",
+        s7_a1: "SPA responsiva de alta fidelidade com Dark Mode & Glassmorphism",
+        s7_a2: "Integração completa com Open Library API e normalização robusta",
+        s7_a3: "Gerenciamento modular de estado com Zustand e persistência Local",
+        s7_a4: "Containerização Docker multi-stage e Nginx pronto para produção",
+        s7_road_title: "Roadmap Futuro",
+        s7_r1: "Notificações Web Push para alertas preventivos de devolução (D-2)",
+        s7_r2: "Check-in de devolução expressa via leitura de QR Code físico",
+        s7_r3: "Integração com autenticação acadêmica institucional (SAML/LDAP)",
+        s7_r4: "Dashboard analítico de demanda bibliográfica para a coordenação"
+      },
+
+      en: {
+        brand_title: "Nosso Livro",
+        brand_subtitle: "University Library Platform • SPA",
+        nav_prev: "Previous",
+        nav_next: "Next",
+        badge_done: "Completed",
+        badge_next: "Upcoming",
+        modal_title: "Keyboard Shortcuts",
+        sk_next: "Next Slide",
+        sk_prev: "Previous Slide",
+        sk_first_last: "First / Last Slide",
+        sk_lang: "Toggle Language",
+        sk_fs: "Toggle Fullscreen",
+        sk_help: "Help / Shortcuts",
+
+        // Slide 1
+        s1_eyebrow: "Capstone Project • Software Engineering",
+        s1_title: "Nosso Livro",
+        s1_subtitle: "University Book Platform (SPA) built with React 18 and TypeScript. Streamlining discovery across millions of titles via the Open Library API, automated loans, and real-time waitlists.",
+        s1_meta: "Capstone Presentation • Architecture, Challenges & Engineering Decisions",
+        s1_card_pill: "● System Online",
+        s1_card_title: "Frictionless Campus Experience",
+        s1_card_desc: "A sleek dark interface inspired by Apple design guidelines and Raycast. Fast, keyboard-driven, and tailored to the everyday needs of students and faculty.",
+        s1_stat1: "Standard Term",
+        s1_stat2: "Global Search",
+        s1_stat3: "Local Sync",
+
+        // Slide 2
+        s2_eyebrow: "Problem Statement & Value Proposition",
+        s2_title: "From Bureaucracy to Instant Circulation",
+        s2_subtitle: "How we turned traditional academic library bottlenecks into a blazing-fast, responsive web experience.",
+        s2_prob_title: "Traditional Libraries (Pain Points)",
+        s2_prob_sub: "Legacy software and manual desk queues",
+        s2_prob_1: "<strong>Front-desk lines & friction:</strong> Lending and returns tied to physical attendance, paper slips, or siloed spreadsheets.",
+        s2_prob_2: "<strong>Clunky discovery:</strong> Rigid legacy OPAC catalogs that fail unless students know exact cataloging metadata.",
+        s2_prob_3: "<strong>Opaque inventory:</strong> Students commute to campus with zero certainty about physical book availability on shelves.",
+        s2_prob_4: "<strong>Poor mobile UX:</strong> Outdated, non-responsive portals that alienate the modern student body.",
+        s2_sol_title: "Solution: Nosso Livro (SPA)",
+        s2_sol_sub: "Instant, seamless digital campus library",
+        s2_sol_1: "<strong>1-Click circulation:</strong> Automated 14-day checkout calculations with one-click 7-day term renewals.",
+        s2_sol_2: "<strong>Instant ⌘K search:</strong> Raycast-inspired spotlight modal querying titles, authors, subjects, and ISBNs in real time.",
+        s2_sol_3: "<strong>Inventory transparency:</strong> Real-time on-campus copy counters and automated reservation waitlists when books run out.",
+        s2_sol_4: "<strong>Modern Dark UI:</strong> Smooth glassmorphism, native keyboard shortcuts, and responsive mobile bottom-nav.",
+
+        // Slide 3
+        s3_eyebrow: "Capabilities & User Experience",
+        s3_title: "A Complete Reader Ecosystem",
+        s3_subtitle: "Core features designed to put reader autonomy and library circulation at the heart of the journey.",
+        s3_f1_title: "Instant Global Search",
+        s3_f1_desc: "Keyboard-triggered search spotlight with debounced input and recent search history connected to the live Open Library API.",
+        s3_f2_title: "Circulation & Waitlists",
+        s3_f2_desc: "Enforced borrowing policies (14-day terms, student loan limits, +7d extensions, and queue management when copies run out).",
+        s3_f2_pill: "Auto Waitlist",
+        s3_f3_title: "Reading Status Tracker",
+        s3_f3_desc: "Easily categorize books into \"Reading\", \"Completed\", or save them to your personal \"Wishlist\" for later research.",
+        s3_f3_pill: "Personal Wishlist",
+        s3_f4_title: "Dynamic Covers & Filters",
+        s3_f4_desc: "Procedural typographic fallback covers when official artwork is missing, plus instant category filtering (Tech, Classics, etc).",
+        s3_f4_pill: "Procedural Engine",
+
+        // Slide 4
+        s4_eyebrow: "Software Engineering",
+        s4_title: "Clean Architecture & Technology Stack",
+        s4_subtitle: "A modular, Nuxt-inspired React architecture driven by fine-grained reactive state stores.",
+        s4_l1_title: "Frontend (SPA)",
+        s4_l1_desc: "Strictly typed React 18 + TypeScript, React Router DOM v6 route guards, and decoupled layouts (AuthLayout vs DefaultLayout).",
+        s4_l2_title: "Global State",
+        s4_l2_desc: "Modular Zustand stores using selector subscriptions to prevent cascading re-renders, seamlessly persisted to LocalStorage.",
+        s4_l3_title: "Services & API",
+        s4_l3_desc: "Resilient Axios HTTP layer with a custom data transformer normalizing polymorphic Open Library endpoints (`/search`, `/works`).",
+        s4_l4_title: "DevOps & Deployment",
+        s4_l4_desc: "Ultra-fast Vite production builds, containerized in a multi-stage Docker Alpine Nginx image, live-hosted on Vercel.",
+
+        // Slide 5
+        s5_eyebrow: "Engineering Deep-Dive & Reflection",
+        s5_title: "Real Challenges & Key Decisions",
+        s5_subtitle: "Technical choices guided by resilience, maintainability, and zero UI performance bottlenecks.",
+        s5_c1_badge: "Technical Challenge #1",
+        s5_c1_title: "Open Library API Polymorphism",
+        s5_c1_desc: "Unpredictable response structures (descriptions alternating between strings and `{value}` objects), missing covers, and no campus inventory data.",
+        s5_c1_solution: "✓ Solution: <code>transformSearchDocToBook</code> data mapper with deterministic hash for campus copies and gradient typography fallbacks.",
+        s5_c2_badge: "Architectural Decision",
+        s5_c2_title: "Zustand over Context API & Redux",
+        s5_c2_desc: "React Context caused full-catalog re-render cascades whenever toasts or loans updated. Redux introduced excessive boilerplate.",
+        s5_c2_solution: "✓ Solution: Zustand fine-grained selectors, out-of-component state access (Axios), and clean reactive <code>localStorage</code> sync.",
+        s5_c3_badge: "Most Critical Concept",
+        s5_c3_title: "React Hooks & Composition",
+        s5_c3_desc: "Isolating asynchronous side-effects and lifecycles allowed UI components to stay declarative, accessible, and lightweight.",
+        s5_c3_solution: "✓ Solution: Debounced queries, global keyboard event listeners (⌘K), and clean continuous pagination without prop drilling or classes.",
+
+        // Slide 6
+        s6_eyebrow: "User Testing & Validation",
+        s6_title: "Pre-Configured Campus Personas",
+        s6_subtitle: "One-click authentication shortcuts for instant testing across all academic user levels.",
+        s6_p1_role: "Undergraduate Student",
+        s6_p1_desc: "Uses the ⌘K search to find course syllabi references, checks out books for 14 days, and joins automated reservation waitlists.",
+        s6_p2_role: "Professor / Researcher",
+        s6_p2_desc: "Curates specialized academic literature, extends research terms (+7 days), and manages reference reading lists.",
+        s6_p3_role: "Campus Head Librarian",
+        s6_p3_desc: "Monitors real-time physical inventory across campuses, audits loan returns, and oversees circulation waitlists.",
+
+        // Slide 7
+        s7_eyebrow: "Milestones & Future Outlook",
+        s7_title: "Conclusion and Future Roadmap",
+        s7_subtitle: "Key engineering accomplishments achieved in this release and future horizons for platform expansion.",
+        s7_achieve_title: "Completed Goals",
+        s7_a1: "High-fidelity, responsive Dark Mode SPA with Apple-style Glassmorphism",
+        s7_a2: "Complete Open Library API integration with resilient data normalization",
+        s7_a3: "Modular global state management with Zustand and reactive LocalStorage",
+        s7_a4: "Multi-stage Docker containerization with production Nginx Alpine",
+        s7_road_title: "Future Roadmap",
+        s7_r1: "Web Push Notifications for proactive due-date return alerts (D-2)",
+        s7_r2: "Express return check-in via physical on-shelf QR code scanning",
+        s7_r3: "Integration with institutional campus single sign-on (SAML/LDAP)",
+        s7_r4: "Curriculum bibliographic analytics dashboard for department heads"
+      }
+    };
+
+    let currentSlide = 1;
+    const totalSlides = 7;
+    let currentLang = 'pt';
+
+    function initDeck() {
+      // Setup total slides in UI
+      document.getElementById('totalSlideNum').textContent = String(totalSlides).padStart(2, '0');
+
+      // Create nav dots
+      const dotsContainer = document.getElementById('navDots');
+      dotsContainer.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `nav-dot ${i === 1 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Slide ${i}`);
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+
+      // Check saved language or default to PT
+      const savedLang = localStorage.getItem('deck_lang') || 'pt';
+      setLanguage(savedLang);
+
+      updateSlideUI();
+    }
+
+    function goToSlide(index) {
+      if (index < 1 || index > totalSlides || index === currentSlide) return;
+
+      const previousSlideEl = document.getElementById(`slide-${currentSlide}`);
+      const nextSlideEl = document.getElementById(`slide-${index}`);
+
+      if (previousSlideEl) previousSlideEl.classList.remove('active');
+      if (nextSlideEl) nextSlideEl.classList.add('active');
+
+      currentSlide = index;
+      updateSlideUI();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        goToSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        goToSlide(currentSlide - 1);
+      }
+    }
+
+    function updateSlideUI() {
+      // Update counter
+      document.getElementById('currentSlideNum').textContent = String(currentSlide).padStart(2, '0');
+
+      // Update progress bar
+      const progressPercent = (currentSlide / totalSlides) * 100;
+      document.getElementById('progressBar').style.width = `${progressPercent}%`;
+
+      // Update nav buttons
+      document.getElementById('prevBtn').disabled = currentSlide === 1;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+
+      // Update dots
+      const dots = document.querySelectorAll('.nav-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx + 1 === currentSlide);
+      });
+    }
+
+    // Language switcher
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+      localStorage.setItem('deck_lang', lang);
+
+      // Update toggle buttons
+      document.getElementById('btnPt').classList.toggle('active', lang === 'pt');
+      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+      // Update document title
+      document.title = lang === 'pt' ? 'Nosso Livro — Apresentação do Projeto' : 'Nosso Livro — Project Presentation';
+
+      // Update all data-i18n elements
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'pt' ? 'en' : 'pt');
+    }
+
+    // Fullscreen toggle
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.warn(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Shortcuts modal
+    function toggleShortcutsModal() {
+      const modal = document.getElementById('shortcutsModal');
+      modal.classList.toggle('open');
+    }
+
+    function closeShortcutsModalOnBackdrop(e) {
+      if (e.target.id === 'shortcutsModal') {
+        toggleShortcutsModal();
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      // Ignore if typing in an input/textarea if any
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+
+      switch (e.key) {
+        case 'ArrowRight':
+        case ' ':
+        case 'PageDown':
+          e.preventDefault();
+          nextSlide();
+          break;
+        case 'ArrowLeft':
+        case 'Backspace':
+        case 'PageUp':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(1);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(totalSlides);
+          break;
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          toggleFullScreen();
+          break;
+        case 'l':
+        case 'L':
+          e.preventDefault();
+          toggleLanguage();
+          break;
+        case '?':
+          e.preventDefault();
+          toggleShortcutsModal();
+          break;
+        case 'Escape':
+          const modal = document.getElementById('shortcutsModal');
+          if (modal.classList.contains('open')) {
+            modal.classList.remove('open');
+          }
+          break;
+      }
+    });
+
+    // Touch swipe gestures for mobile/tablet
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 50;
+      if (touchEndX < touchStartX - threshold) {
+        nextSlide();
+      } else if (touchEndX > touchStartX + threshold) {
+        prevSlide();
+      }
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', initDeck);
+  </script>
+</body>
+</html>

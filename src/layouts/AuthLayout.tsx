@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Toast } from '../components/Toast';
-import { BookOpen, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import { HammerSickle } from '../components/HammerSickle';
 
 export const AuthLayout: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const AuthLayout: React.FC = () => {
       <header className="topbar">
         <Link to="/" className="brand" aria-label="Nosso Livro">
           <div className="brand-mark" aria-hidden="true">
-            <BookOpen size={26} strokeWidth={2.2} />
+            <HammerSickle size={26} color="#ffd700" />
           </div>
           <div>
             <div className="brand-name">Nosso Livro</div>

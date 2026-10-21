@@ -16,6 +16,7 @@ import {
 import { useSearchModalStore } from '../store/searchModalStore';
 import { CategoryFilter } from '../types/book';
 import { sanitizeInput } from '../utils/sanitize';
+import { HammerSickle } from './HammerSickle';
 
 interface PaletteItem {
   id: string;
@@ -391,7 +392,7 @@ export const SearchModal: React.FC = () => {
         <div className="raycast-footer">
           <div className="raycast-footer-left">
             <div className="raycast-brand-mark" aria-hidden="true">
-              <BookOpen size={13} />
+              <HammerSickle size={13} color="#ffd700" />
             </div>
             <span className="raycast-brand-text">Nosso Livro</span>
             <span className="raycast-footer-dot">&bull;</span>

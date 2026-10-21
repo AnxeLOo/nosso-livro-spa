@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { useToastStore } from '../store/toastStore';
-import { LogOut, BookOpen, Search } from 'lucide-react';
+import { LogOut, Search } from 'lucide-react';
+import { HammerSickle } from './HammerSickle';
 import { useSearchModalStore } from '../store/searchModalStore';
 
 export const Header: React.FC = () => {
@@ -22,7 +23,7 @@ export const Header: React.FC = () => {
     <header className="topbar">
       <Link to="/" className="brand" aria-label="Ir para a página inicial">
         <div className="brand-mark" aria-hidden="true">
-          <BookOpen size={26} strokeWidth={2.2} />
+          <HammerSickle size={26} color="#ffd700" />
         </div>
         <div>
           <div className="brand-name">Nosso Livro</div>
